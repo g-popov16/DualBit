@@ -1,11 +1,13 @@
 import UIKit
 import Firebase
 
-class LessonViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class LessonViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITabBarDelegate {
+    @IBOutlet weak var tabBar: UITabBar!
     @IBOutlet weak var tableView: UITableView!
     var lessonsBrain = LessonsBrain()
     override func viewDidLoad() {
         super.viewDidLoad()
+        tabBar.delegate = self
         navigationItem.hidesBackButton = true
         tableView.delegate = self
         tableView.dataSource = self
@@ -24,6 +26,31 @@ class LessonViewController: UIViewController, UITableViewDelegate, UITableViewDa
             }
         }
     }
+    func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
+        guard let items = tabBar.items, let selectedIndex = items.firstIndex(of: item) else { return }
+
+        switch selectedIndex {
+        case 0:
+            // Present or navigate to the first view controller
+            navigateToViewController(withIdentifier: "LessonViewController")
+        case 1:
+            // Present or navigate to the second view controller
+            navigateToViewController(withIdentifier: "ProfileViewController")
+        // Add more cases as needed
+        default:
+            break
+        }
+    }
+    
+    func navigateToViewController(withIdentifier identifier: String) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let viewController = storyboard.instantiateViewController(withIdentifier: identifier)
+        // Present or push the view controller
+        // For example, if you're using a navigation controller:
+        navigationController?.pushViewController(viewController, animated: true)
+    }
+
+
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return lessonsBrain.lessons.count

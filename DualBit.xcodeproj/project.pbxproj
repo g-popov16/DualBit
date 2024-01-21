@@ -22,6 +22,8 @@
 		77054BC92B4B3C5E00176026 /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77054BC82B4B3C5E00176026 /* Question.swift */; };
 		77054BCD2B4B3C9F00176026 /* QuizBrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77054BCC2B4B3C9F00176026 /* QuizBrain.swift */; };
 		772072E82B5B134400133457 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 772072E72B5B134400133457 /* GoogleService-Info.plist */; };
+		773A0E102B5D5CFB009D911D /* boy.png in Resources */ = {isa = PBXBuildFile; fileRef = 773A0E0F2B5D5CFB009D911D /* boy.png */; };
+		773A0E122B5D6F32009D911D /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 773A0E112B5D6F32009D911D /* ProfileViewController.swift */; };
 		774FEBBD2B4B21F100AD78F0 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 774FEBBC2B4B21F100AD78F0 /* FirebaseAnalytics */; };
 		774FEBBF2B4B21F100AD78F0 /* FirebaseAnalyticsOnDeviceConversion in Frameworks */ = {isa = PBXBuildFile; productRef = 774FEBBE2B4B21F100AD78F0 /* FirebaseAnalyticsOnDeviceConversion */; };
 		774FEBC12B4B21F100AD78F0 /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 774FEBC02B4B21F100AD78F0 /* FirebaseAnalyticsSwift */; };
@@ -88,6 +90,8 @@
 		77054BC82B4B3C5E00176026 /* Question.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
 		77054BCC2B4B3C9F00176026 /* QuizBrain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuizBrain.swift; sourceTree = "<group>"; };
 		772072E72B5B134400133457 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		773A0E0F2B5D5CFB009D911D /* boy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = boy.png; sourceTree = "<group>"; };
+		773A0E112B5D6F32009D911D /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		777971452B4A119700592CC6 /* constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = constants.swift; sourceTree = "<group>"; };
 		777971472B4A170200592CC6 /* message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = message.swift; sourceTree = "<group>"; };
 		7779714D2B4AF38900592CC6 /* MessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCell.swift; sourceTree = "<group>"; };
@@ -173,6 +177,7 @@
 				0B628193235DF03400E35CAF /* Views */,
 				0B628192235DF02000E35CAF /* Controllers */,
 				0B62817F235DEE8400E35CAF /* Assets.xcassets */,
+				773A0E0F2B5D5CFB009D911D /* boy.png */,
 				0B628181235DEE8400E35CAF /* LaunchScreen.storyboard */,
 				777971452B4A119700592CC6 /* constants.swift */,
 				0B628184235DEE8400E35CAF /* Info.plist */,
@@ -191,6 +196,7 @@
 				0B628190235DF01B00E35CAF /* ChatViewController.swift */,
 				77D7E2132B506E9D007F7C86 /* LessonViewController.swift */,
 				77FBA61C2B5401B3006A4BE9 /* VideoViewController.swift */,
+				773A0E112B5D6F32009D911D /* ProfileViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -325,6 +331,7 @@
 				7789FD142B531E120012BFF4 /* LessonTableViewCell.xib in Resources */,
 				777971502B4AF38900592CC6 /* MessageCell.xib in Resources */,
 				0B628180235DEE8400E35CAF /* Assets.xcassets in Resources */,
+				773A0E102B5D5CFB009D911D /* boy.png in Resources */,
 				0B62819E235F0F4D00E35CAF /* README.md in Resources */,
 				0B62817E235DEE8100E35CAF /* Main.storyboard in Resources */,
 				772072E82B5B134400133457 /* GoogleService-Info.plist in Resources */,
@@ -347,6 +354,7 @@
 				0B62818F235DF01000E35CAF /* LoginViewController.swift in Sources */,
 				77054BC72B4B3C5300176026 /* QuizViewController.swift in Sources */,
 				777971482B4A170200592CC6 /* message.swift in Sources */,
+				773A0E122B5D6F32009D911D /* ProfileViewController.swift in Sources */,
 				77054BC92B4B3C5E00176026 /* Question.swift in Sources */,
 				0B628191235DF01B00E35CAF /* ChatViewController.swift in Sources */,
 				0B62818D235DF00B00E35CAF /* RegisterViewController.swift in Sources */,
