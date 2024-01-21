@@ -67,33 +67,28 @@ class ViewController: UIViewController {
         
         sender.backgroundColor = isCorrect ? UIColor.green : UIColor.red
         snake.image = isCorrect ? UIImage(named: "SnakeHappy") : UIImage(named: "SnakeAngry")
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { // Adjust the delay as needed
+            sender.backgroundColor = UIColor.clear
             if self.quizBrain.isQuizFinished() {
                 if self.quizBrain.didUserPassQuiz() {
-                        // The user has completed and passed the quiz
-                        if let userId = Auth.auth().currentUser?.uid, let lessonId = self.selectedLessonId {
-                            self.quizBrain.completeLesson(lessonId: lessonId, userId: userId)
-                        }
-                    } else {
-                        self.quizBrain.nextQuestion()
-
-                    }
+                    // The user has completed and passed the quiz
+                    
+//                        self.quizBrain.completeLesson(lessonId: lessonId, userId: userId)
+                        print("Quiz completed and passed. Performing segue.")
+                        self.performSegue(withIdentifier: "quizToLessons", sender: nil)
+                    
                 } else {
-                    // The quiz is not yet finished, go to the next question
-                    self.quizBrain.nextQuestion()
-                    // Update UI accordingly
+                    // Handle the case where the quiz is finished but not passed
+                    print("Quiz finished but not passed.")
                 }
+            } else {
+                // The quiz is not yet finished, go to the next question
+                self.quizBrain.nextQuestion()
+                // Update UI accordingly
                 self.updateUI()
             }
-        
-       
-        
-        
-        
-        
-        
+        }
     }
-    
     @objc func updateUI() {
         // Assuming you have a method in QuizBrain to get the current question text
         

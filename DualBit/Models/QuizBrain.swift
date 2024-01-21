@@ -58,7 +58,8 @@ class QuizBrain {
     }
     
     func isQuizFinished() -> Bool {
-           return currentQuestionIndex >= questions.count - 1
+            return currentQuestionIndex >= questions.count - 1
+            
        }
 
        // Check if the user has passed the quiz
@@ -182,11 +183,14 @@ class QuizBrain {
         if currentQuestionIndex + 1 < questions.count {
             currentQuestionIndex += 1
         } else {
-            // Reset for a new round or handle quiz completion
-            currentQuestionIndex = 0
-            score = 0
-            
+            // Quiz finished, handle accordingly without resetting here
+            print("Quiz finished. currentQuestionIndex: \(currentQuestionIndex)")
         }
+    }
+
+    func resetQuiz() {
+        currentQuestionIndex = 0
+        score = 0
     }
     
     
