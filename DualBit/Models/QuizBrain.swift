@@ -76,9 +76,18 @@ class QuizBrain {
         do {
             // Clear existing questions
             self.questions.removeAll()
+
+            // Ensure we have a lessonId to work with
+            guard let lessonId = lessonId else {
+                print("No lesson ID provided")
+                return
+            }
             
-            // Fetch all questions documents from the questions collection
-            let questionsSnapshot = try await db.collection("questions").getDocuments()
+            // The collection name should be constructed using the lessonId
+            let formattedCollectionName = "questions\(lessonId)"
+
+            // Fetch all questions documents from the specific lesson's question collection
+            let questionsSnapshot = try await db.collection(formattedCollectionName).getDocuments()
             
             // Iterate through each document and create a Question object
             for document in questionsSnapshot.documents {
@@ -86,26 +95,21 @@ class QuizBrain {
                    let answers = document.data()["answers"] as? [String],
                    let correctAnswer = document.data()["correctAnswer"] as? String {
                     let question = Question(q: questionText, a: answers, correctAnswer: correctAnswer)
-                    print(question)
                     self.questions.append(question)
-                    print("Number of questions fetched: \(questionsSnapshot.documents.count)")
-
-                } else {
-                    print("Question document \(document.documentID) data is incomplete or missing")
                 }
             }
 
             if self.questions.isEmpty {
-                print("No questions were loaded from the database")
+                print("No questions were loaded from the database for lesson: \(lessonId)")
             } else {
-                print("Questions loaded successfully")
+                print("Questions loaded successfully for lesson: \(lessonId)")
             }
 
         } catch {
             print("Error fetching questions: \(error)")
         }
-        
     }
+
 
 
 

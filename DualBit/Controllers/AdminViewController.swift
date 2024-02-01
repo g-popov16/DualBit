@@ -1,34 +1,23 @@
 //
-//  ProfileViewController.swift
+//  AdminViewController.swift
 //  DualBit
 //
-//  Created by Georgi Popov on 21.01.24.
+//  Created by Georgi Popov on 27.01.24.
 //
 
-import Foundation
 import UIKit
+import Firebase
 import FirebaseAuth
 
-class ProfileViewController: UIViewController, UITabBarDelegate{
-    
-    @IBAction func logOutPressed(_ sender: UIButton) {
-    
-        let firebaseAuth = Auth.auth()
-        do {
-          try firebaseAuth.signOut()
-            navigationController?.popToRootViewController(animated: true)
-        } catch let signOutError as NSError {
-          print("Error signing out: %@", signOutError)
-        }
-    }
-    @IBOutlet weak var nameLabel: UILabel!
+class AdminViewController: UIViewController, UITabBarDelegate{
     @IBOutlet weak var tabBar: UITabBar!
+    @IBOutlet weak var nameLabel: UILabel!
     override func viewDidLoad() {
-        super.viewDidLoad()
+        
         tabBar.delegate = self
-        if let email = Auth.auth().currentUser?.email {
-            nameLabel.text = "Hello \(email)!"
-            
+        super.viewDidLoad()
+        if let email = Auth.auth().currentUser?.email{
+            nameLabel.text = "Hello \(email), you are an admin!"
         }
         
     }
@@ -55,4 +44,6 @@ class ProfileViewController: UIViewController, UITabBarDelegate{
         // For example, if you're using a navigation controller:
         navigationController?.pushViewController(viewController, animated: true)
     }
+        
 }
+

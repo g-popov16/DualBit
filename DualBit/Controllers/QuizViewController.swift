@@ -5,8 +5,6 @@ import FirebaseFirestore
 import FirebaseAuth
 
 let db = Firestore.firestore()
-let questionRef = db.collection("questions").document("question1")
-
 
 
 class ViewController: UIViewController {
@@ -50,9 +48,19 @@ class ViewController: UIViewController {
     func loadQuestions() async {
         await quizBrain.loadQuestions()
         // Call updateUI on the main thread after questions have been loaded
+        guard let selectedId = selectedLessonId else {
+                print("No lesson ID selected.")
+                return
+            }
+
+        let questionsRef = getQuestionRef(forLessonId: selectedId)
         DispatchQueue.main.async {
             self.updateUI()
         }
+    }
+    
+    func getQuestionRef(forLessonId lessonId: String) -> CollectionReference {
+        return db.collection("questions\(lessonId)")
     }
 
 

@@ -1,12 +1,27 @@
 import UIKit
 import Firebase
+import FirebaseAuth
 
 class LessonViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITabBarDelegate {
+    @IBOutlet weak var addButton: UITabBarItem!
     @IBOutlet weak var tabBar: UITabBar!
     @IBOutlet weak var tableView: UITableView!
     var lessonsBrain = LessonsBrain()
+    var isAdmin: Bool = false
     override func viewDidLoad() {
         super.viewDidLoad()
+        checkIfUserIsAdmin { isAdmin in
+            DispatchQueue.main.async {
+                if isAdmin {
+                    // User is an admin
+                    self.addAdminTab()
+                } else {
+                    // User is not an admin
+                    print("User is not an admin.")
+                }
+            }
+        }
+        let userId = Auth.auth().currentUser?.uid
         tabBar.delegate = self
         navigationItem.hidesBackButton = true
         tableView.delegate = self
@@ -36,7 +51,8 @@ class LessonViewController: UIViewController, UITableViewDelegate, UITableViewDa
         case 1:
             // Present or navigate to the second view controller
             navigateToViewController(withIdentifier: "ProfileViewController")
-        // Add more cases as needed
+        case 2:
+            navigateToViewController(withIdentifier: "Admin")
         default:
             break
         }
@@ -50,7 +66,7 @@ class LessonViewController: UIViewController, UITableViewDelegate, UITableViewDa
         navigationController?.pushViewController(viewController, animated: true)
     }
 
-
+    
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return lessonsBrain.lessons.count
@@ -105,4 +121,39 @@ class LessonViewController: UIViewController, UITableViewDelegate, UITableViewDa
 //            destinationVC.quizBrain = QuizBrain(lessonId: selectedLesson.id)
         }
     }
+    
+    private func addAdminTab() {
+        let adminItem = UITabBarItem(title: "Add", image: UIImage(systemName: "plus"), tag: 1)
+        if let items = tabBar.items {
+            tabBar.items = items + [adminItem]
+        } else {
+            tabBar.items = [adminItem]
+        }
+    }
 }
+
+// Function to check if the current user is an admin
+func checkIfUserIsAdmin(completion: @escaping (Bool) -> Void) {
+    // Make sure there is a logged-in user
+    guard let userId = Auth.auth().currentUser?.uid else {
+        print("No user is logged in.")
+        completion(false) // No user is logged in, so cannot be admin
+        return
+    }
+
+    let userDocRef = Firestore.firestore().collection("users").document(userId)
+    userDocRef.getDocument { (document, error) in
+        if let document = document, document.exists {
+            // Check if 'isAdmin' field exists and is set to true
+            let isAdmin = document.data()?["isAdmin"] as? Bool ?? false
+            completion(isAdmin) // Return true or false based on the isAdmin field
+        } else {
+            print("Document does not exist or error fetching document: \(error?.localizedDescription ?? "Unknown error")")
+            completion(false) // Document doesn't exist or there was an error, so cannot be admin
+        }
+    }
+    
+}
+
+
+

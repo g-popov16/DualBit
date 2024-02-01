@@ -22,6 +22,9 @@
 		77054BC92B4B3C5E00176026 /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77054BC82B4B3C5E00176026 /* Question.swift */; };
 		77054BCD2B4B3C9F00176026 /* QuizBrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77054BCC2B4B3C9F00176026 /* QuizBrain.swift */; };
 		772072E82B5B134400133457 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 772072E72B5B134400133457 /* GoogleService-Info.plist */; };
+		772DD87A2B659C3D006398BD /* AdminViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 772DD8792B659C3D006398BD /* AdminViewController.swift */; };
+		772DD87C2B65A1F9006398BD /* AddLessonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 772DD87B2B65A1F9006398BD /* AddLessonViewController.swift */; };
+		772DD87E2B65A4E2006398BD /* AddQuestionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 772DD87D2B65A4E2006398BD /* AddQuestionsViewController.swift */; };
 		773A0E102B5D5CFB009D911D /* boy.png in Resources */ = {isa = PBXBuildFile; fileRef = 773A0E0F2B5D5CFB009D911D /* boy.png */; };
 		773A0E122B5D6F32009D911D /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 773A0E112B5D6F32009D911D /* ProfileViewController.swift */; };
 		774FEBBD2B4B21F100AD78F0 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 774FEBBC2B4B21F100AD78F0 /* FirebaseAnalytics */; };
@@ -90,6 +93,9 @@
 		77054BC82B4B3C5E00176026 /* Question.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
 		77054BCC2B4B3C9F00176026 /* QuizBrain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuizBrain.swift; sourceTree = "<group>"; };
 		772072E72B5B134400133457 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		772DD8792B659C3D006398BD /* AdminViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminViewController.swift; sourceTree = "<group>"; };
+		772DD87B2B65A1F9006398BD /* AddLessonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddLessonViewController.swift; sourceTree = "<group>"; };
+		772DD87D2B65A4E2006398BD /* AddQuestionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddQuestionsViewController.swift; sourceTree = "<group>"; };
 		773A0E0F2B5D5CFB009D911D /* boy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = boy.png; sourceTree = "<group>"; };
 		773A0E112B5D6F32009D911D /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		777971452B4A119700592CC6 /* constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = constants.swift; sourceTree = "<group>"; };
@@ -197,6 +203,9 @@
 				77D7E2132B506E9D007F7C86 /* LessonViewController.swift */,
 				77FBA61C2B5401B3006A4BE9 /* VideoViewController.swift */,
 				773A0E112B5D6F32009D911D /* ProfileViewController.swift */,
+				772DD8792B659C3D006398BD /* AdminViewController.swift */,
+				772DD87B2B65A1F9006398BD /* AddLessonViewController.swift */,
+				772DD87D2B65A4E2006398BD /* AddQuestionsViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -347,12 +356,14 @@
 			files = (
 				77054BCD2B4B3C9F00176026 /* QuizBrain.swift in Sources */,
 				0B62818B235DF00000E35CAF /* WelcomeViewController.swift in Sources */,
+				772DD87C2B65A1F9006398BD /* AddLessonViewController.swift in Sources */,
 				77FBA61D2B5401B3006A4BE9 /* VideoViewController.swift in Sources */,
 				0B628177235DEE8100E35CAF /* AppDelegate.swift in Sources */,
 				0B628179235DEE8100E35CAF /* SceneDelegate.swift in Sources */,
 				777971462B4A119700592CC6 /* constants.swift in Sources */,
 				0B62818F235DF01000E35CAF /* LoginViewController.swift in Sources */,
 				77054BC72B4B3C5300176026 /* QuizViewController.swift in Sources */,
+				772DD87A2B659C3D006398BD /* AdminViewController.swift in Sources */,
 				777971482B4A170200592CC6 /* message.swift in Sources */,
 				773A0E122B5D6F32009D911D /* ProfileViewController.swift in Sources */,
 				77054BC92B4B3C5E00176026 /* Question.swift in Sources */,
@@ -363,6 +374,7 @@
 				77D7E2142B506E9D007F7C86 /* LessonViewController.swift in Sources */,
 				77054BC32B4B30B000176026 /* users.swift in Sources */,
 				77D7E2162B507044007F7C86 /* lessons.swift in Sources */,
+				772DD87E2B65A4E2006398BD /* AddQuestionsViewController.swift in Sources */,
 				7789FD132B531E120012BFF4 /* LessonTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
