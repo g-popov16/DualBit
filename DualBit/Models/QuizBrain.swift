@@ -84,7 +84,7 @@ class QuizBrain {
             }
             
             // The collection name should be constructed using the lessonId
-            let formattedCollectionName = "questions\(lessonId)"
+            let formattedCollectionName = "questions_\(lessonId)"
 
             // Fetch all questions documents from the specific lesson's question collection
             let questionsSnapshot = try await db.collection(formattedCollectionName).getDocuments()

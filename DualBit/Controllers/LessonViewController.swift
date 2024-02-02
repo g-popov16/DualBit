@@ -118,6 +118,7 @@ class LessonViewController: UIViewController, UITableViewDelegate, UITableViewDa
            let indexPath = tableView.indexPathForSelectedRow {
             let selectedLesson = lessonsBrain.lessons[indexPath.row]
             destinationVC.videoRef = selectedLesson.videoRef
+            destinationVC.lessonId = selectedLesson.id
 //            destinationVC.quizBrain = QuizBrain(lessonId: selectedLesson.id)
         }
     }

@@ -36,6 +36,7 @@ class VideoViewController:
         present(playerViewController, animated: true) {
             playerViewController.player!.play()
         }
+        print(lessonId)
         
         NotificationCenter.default.addObserver(
             forName: .AVPlayerItemDidPlayToEndTime,
@@ -53,13 +54,9 @@ class VideoViewController:
         if segue.identifier == "VideoToQuiz",
            let destinationVC = segue.destination as? ViewController,
            let lessonId = sender as? String {
-            // Initialize QuizBrain with the lesson ID
-            let quizBrain = QuizBrain(lessonId: lessonId)
-            // Assign the QuizBrain to the destination view controller
-            destinationVC.quizBrain = quizBrain
-            // You may need to load questions here or in QuizViewController's viewDidLoad, depending on your implementation
+            destinationVC.selectedLessonId = lessonId // Ensure this property is correctly used to initialize `quizBrain` or directly passed to it.
+            
         }
+        
     }
-    
 }
-

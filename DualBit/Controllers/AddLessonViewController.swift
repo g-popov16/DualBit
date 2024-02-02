@@ -34,43 +34,45 @@ class AddLessonViewController: UIViewController, UITabBarDelegate{
         let storageRef = Storage.storage().reference()
         let videoID = UUID().uuidString
         let videosRef = storageRef.child("videos/\(videoID).mp4")
-        
+
         print("Starting video upload for videoID: \(videoID)")
-        
+
         videosRef.putFile(from: videoURL, metadata: nil) { metadata, error in
             if let error = error {
                 print("Error during video upload: \(error.localizedDescription)")
                 return
             }
-            
+
             guard metadata != nil else {
                 print("Metadata is nil after video upload.")
                 return
             }
-            
+
             print("Video uploaded, fetching download URL for videoID: \(videoID)")
-            
+
             videosRef.downloadURL { [weak self] (url, error) in
                 if let error = error {
                     print("Download URL not found: \(error.localizedDescription)")
                     return
                 }
-                
+
                 guard let downloadURL = url else {
                     print("Download URL is nil.")
                     return
                 }
-                
+
                 print("Video uploaded successfully, download URL: \(downloadURL)")
                 self?.updateLessonWithVideoRef(lessonID: lessonID, videoRef: downloadURL.absoluteString) {
                     // After successfully updating the lesson, perform the segue
                     DispatchQueue.main.async {
-                        self?.performSegue(withIdentifier: "AddQuestionsVC", sender: nil)
+                        // Correctly use lessonID instead of newLessonRef
+                        self?.performSegue(withIdentifier: "AddQuestionsVC", sender: lessonID)
                     }
                 }
             }
         }
     }
+
 
     
     
@@ -154,6 +156,7 @@ class AddLessonViewController: UIViewController, UITabBarDelegate{
             destinationVC.lessonID = lessonID
         }
     }
+
 
 }
 

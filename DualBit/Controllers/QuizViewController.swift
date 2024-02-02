@@ -50,6 +50,7 @@ class ViewController: UIViewController {
         // Call updateUI on the main thread after questions have been loaded
         guard let selectedId = selectedLessonId else {
                 print("No lesson ID selected.")
+            
                 return
             }
 
@@ -60,7 +61,7 @@ class ViewController: UIViewController {
     }
     
     func getQuestionRef(forLessonId lessonId: String) -> CollectionReference {
-        return db.collection("questions\(lessonId)")
+        return db.collection("questions_\(lessonId)")
     }
 
 
