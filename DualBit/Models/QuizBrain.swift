@@ -1,3 +1,23 @@
+/**
+ A class representing a Quiz Brain.
+
+ The QuizBrain class is responsible for managing the quiz logic, including loading questions from Firestore, checking answers, keeping track of the score, and advancing to the next question.
+
+ Usage:
+ 1. Create an instance of QuizBrain with a lesson ID.
+ 2. Call the `loadQuestions()` method to fetch questions from Firestore.
+ 3. Use the `getQuestionText()` method to get the current question's text.
+ 4. Use the `getAnswers()` method to get the available answers for the current question.
+ 5. Call the `checkAnswer(_:)` method to check if the user's answer is correct.
+ 6. Use the `getScore()` method to get the current score.
+ 7. Call the `nextQuestion()` method to advance to the next question.
+ 8. Use the `getProgress()` method to get the progress of the quiz.
+ 9. Call the `resetQuiz()` method to reset the quiz.
+
+ - Note: Before using the QuizBrain class, make sure to set the `lessonId` property to the desired lesson ID.
+
+ - Important: The QuizBrain class requires a valid Firestore configuration and internet connection to fetch questions from Firestore.
+ */
 
 
 import Foundation

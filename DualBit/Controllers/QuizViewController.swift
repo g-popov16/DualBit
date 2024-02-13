@@ -1,3 +1,13 @@
+/**
+ This is the view controller responsible for displaying the quiz to the user.
+ It contains UI elements such as question label, progress bar, answer buttons, and score label.
+ The quiz questions are loaded from Firestore and the user's answers are checked for correctness.
+ The UI is updated based on the user's progress and score.
+ */
+import UIKit
+import FirebaseFirestore
+import FirebaseAuth
+
 
 
 import UIKit

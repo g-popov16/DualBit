@@ -21,6 +21,7 @@
 		77054BC72B4B3C5300176026 /* QuizViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77054BC62B4B3C5300176026 /* QuizViewController.swift */; };
 		77054BC92B4B3C5E00176026 /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77054BC82B4B3C5E00176026 /* Question.swift */; };
 		77054BCD2B4B3C9F00176026 /* QuizBrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77054BCC2B4B3C9F00176026 /* QuizBrain.swift */; };
+		7705965A2B701917007BA076 /* FriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 770596592B701917007BA076 /* FriendsViewController.swift */; };
 		772072E82B5B134400133457 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 772072E72B5B134400133457 /* GoogleService-Info.plist */; };
 		772DD87A2B659C3D006398BD /* AdminViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 772DD8792B659C3D006398BD /* AdminViewController.swift */; };
 		772DD87C2B65A1F9006398BD /* AddLessonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 772DD87B2B65A1F9006398BD /* AddLessonViewController.swift */; };
@@ -69,6 +70,11 @@
 		777971532B4B089400592CC6 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 777971522B4B089400592CC6 /* IQKeyboardManagerSwift */; };
 		7789FD132B531E120012BFF4 /* LessonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7789FD112B531E120012BFF4 /* LessonTableViewCell.swift */; };
 		7789FD142B531E120012BFF4 /* LessonTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7789FD122B531E120012BFF4 /* LessonTableViewCell.xib */; };
+		77A10D7F2B7AA1FD00DAF8DA /* Friends.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77A10D7E2B7AA1FD00DAF8DA /* Friends.swift */; };
+		77A10D812B7AA51E00DAF8DA /* Admin.png in Resources */ = {isa = PBXBuildFile; fileRef = 77A10D802B7AA51E00DAF8DA /* Admin.png */; };
+		77A10D842B7AA9C300DAF8DA /* check.png in Resources */ = {isa = PBXBuildFile; fileRef = 77A10D822B7AA9C300DAF8DA /* check.png */; };
+		77A10D852B7AA9C300DAF8DA /* play.png in Resources */ = {isa = PBXBuildFile; fileRef = 77A10D832B7AA9C300DAF8DA /* play.png */; };
+		77D05E022B793B2500648391 /* InboxViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77D05E012B793B2500648391 /* InboxViewController.swift */; };
 		77D7E2142B506E9D007F7C86 /* LessonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77D7E2132B506E9D007F7C86 /* LessonViewController.swift */; };
 		77D7E2162B507044007F7C86 /* lessons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77D7E2152B507044007F7C86 /* lessons.swift */; };
 		77D7E2182B5070DF007F7C86 /* lessonsBrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77D7E2172B5070DF007F7C86 /* lessonsBrain.swift */; };
@@ -92,6 +98,7 @@
 		77054BC62B4B3C5300176026 /* QuizViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuizViewController.swift; sourceTree = "<group>"; };
 		77054BC82B4B3C5E00176026 /* Question.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
 		77054BCC2B4B3C9F00176026 /* QuizBrain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuizBrain.swift; sourceTree = "<group>"; };
+		770596592B701917007BA076 /* FriendsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsViewController.swift; sourceTree = "<group>"; };
 		772072E72B5B134400133457 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		772DD8792B659C3D006398BD /* AdminViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminViewController.swift; sourceTree = "<group>"; };
 		772DD87B2B65A1F9006398BD /* AddLessonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddLessonViewController.swift; sourceTree = "<group>"; };
@@ -104,6 +111,11 @@
 		7779714E2B4AF38900592CC6 /* MessageCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MessageCell.xib; sourceTree = "<group>"; };
 		7789FD112B531E120012BFF4 /* LessonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonTableViewCell.swift; sourceTree = "<group>"; };
 		7789FD122B531E120012BFF4 /* LessonTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LessonTableViewCell.xib; sourceTree = "<group>"; };
+		77A10D7E2B7AA1FD00DAF8DA /* Friends.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Friends.swift; sourceTree = "<group>"; };
+		77A10D802B7AA51E00DAF8DA /* Admin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Admin.png; sourceTree = "<group>"; };
+		77A10D822B7AA9C300DAF8DA /* check.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = check.png; sourceTree = "<group>"; };
+		77A10D832B7AA9C300DAF8DA /* play.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = play.png; sourceTree = "<group>"; };
+		77D05E012B793B2500648391 /* InboxViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InboxViewController.swift; sourceTree = "<group>"; };
 		77D7E2132B506E9D007F7C86 /* LessonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonViewController.swift; sourceTree = "<group>"; };
 		77D7E2152B507044007F7C86 /* lessons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = lessons.swift; sourceTree = "<group>"; };
 		77D7E2172B5070DF007F7C86 /* lessonsBrain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = lessonsBrain.swift; sourceTree = "<group>"; };
@@ -183,6 +195,9 @@
 				0B628193235DF03400E35CAF /* Views */,
 				0B628192235DF02000E35CAF /* Controllers */,
 				0B62817F235DEE8400E35CAF /* Assets.xcassets */,
+				77A10D822B7AA9C300DAF8DA /* check.png */,
+				77A10D832B7AA9C300DAF8DA /* play.png */,
+				77A10D802B7AA51E00DAF8DA /* Admin.png */,
 				773A0E0F2B5D5CFB009D911D /* boy.png */,
 				0B628181235DEE8400E35CAF /* LaunchScreen.storyboard */,
 				777971452B4A119700592CC6 /* constants.swift */,
@@ -206,6 +221,8 @@
 				772DD8792B659C3D006398BD /* AdminViewController.swift */,
 				772DD87B2B65A1F9006398BD /* AddLessonViewController.swift */,
 				772DD87D2B65A4E2006398BD /* AddQuestionsViewController.swift */,
+				770596592B701917007BA076 /* FriendsViewController.swift */,
+				77D05E012B793B2500648391 /* InboxViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -231,6 +248,7 @@
 				77054BCC2B4B3C9F00176026 /* QuizBrain.swift */,
 				77D7E2152B507044007F7C86 /* lessons.swift */,
 				77D7E2172B5070DF007F7C86 /* lessonsBrain.swift */,
+				77A10D7E2B7AA1FD00DAF8DA /* Friends.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -336,11 +354,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				77A10D812B7AA51E00DAF8DA /* Admin.png in Resources */,
 				0B628183235DEE8400E35CAF /* LaunchScreen.storyboard in Resources */,
 				7789FD142B531E120012BFF4 /* LessonTableViewCell.xib in Resources */,
 				777971502B4AF38900592CC6 /* MessageCell.xib in Resources */,
 				0B628180235DEE8400E35CAF /* Assets.xcassets in Resources */,
 				773A0E102B5D5CFB009D911D /* boy.png in Resources */,
+				77A10D842B7AA9C300DAF8DA /* check.png in Resources */,
+				77A10D852B7AA9C300DAF8DA /* play.png in Resources */,
 				0B62819E235F0F4D00E35CAF /* README.md in Resources */,
 				0B62817E235DEE8100E35CAF /* Main.storyboard in Resources */,
 				772072E82B5B134400133457 /* GoogleService-Info.plist in Resources */,
@@ -362,6 +383,7 @@
 				0B628179235DEE8100E35CAF /* SceneDelegate.swift in Sources */,
 				777971462B4A119700592CC6 /* constants.swift in Sources */,
 				0B62818F235DF01000E35CAF /* LoginViewController.swift in Sources */,
+				77A10D7F2B7AA1FD00DAF8DA /* Friends.swift in Sources */,
 				77054BC72B4B3C5300176026 /* QuizViewController.swift in Sources */,
 				772DD87A2B659C3D006398BD /* AdminViewController.swift in Sources */,
 				777971482B4A170200592CC6 /* message.swift in Sources */,
@@ -369,9 +391,11 @@
 				77054BC92B4B3C5E00176026 /* Question.swift in Sources */,
 				0B628191235DF01B00E35CAF /* ChatViewController.swift in Sources */,
 				0B62818D235DF00B00E35CAF /* RegisterViewController.swift in Sources */,
+				7705965A2B701917007BA076 /* FriendsViewController.swift in Sources */,
 				7779714F2B4AF38900592CC6 /* MessageCell.swift in Sources */,
 				77D7E2182B5070DF007F7C86 /* lessonsBrain.swift in Sources */,
 				77D7E2142B506E9D007F7C86 /* LessonViewController.swift in Sources */,
+				77D05E022B793B2500648391 /* InboxViewController.swift in Sources */,
 				77054BC32B4B30B000176026 /* users.swift in Sources */,
 				77D7E2162B507044007F7C86 /* lessons.swift in Sources */,
 				772DD87E2B65A4E2006398BD /* AddQuestionsViewController.swift in Sources */,

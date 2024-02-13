@@ -12,15 +12,20 @@ import FirebaseAuth
 class AdminViewController: UIViewController, UITabBarDelegate{
     @IBOutlet weak var tabBar: UITabBar!
     @IBOutlet weak var nameLabel: UILabel!
+    
     override func viewDidLoad() {
-        
-        tabBar.delegate = self
         super.viewDidLoad()
+        
+        // Set the delegate of the tabBar to self
+        tabBar.delegate = self
+        
+        // Check if a user is logged in and display a welcome message
         if let email = Auth.auth().currentUser?.email{
             nameLabel.text = "Hello \(email), you are an admin!"
         }
-        
     }
+    
+    // UITabBarDelegate method called when a tab is selected
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
         guard let items = tabBar.items, let selectedIndex = items.firstIndex(of: item) else { return }
 
@@ -37,6 +42,7 @@ class AdminViewController: UIViewController, UITabBarDelegate{
         }
     }
     
+    // Helper method to navigate to a view controller with a given identifier
     func navigateToViewController(withIdentifier identifier: String) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let viewController = storyboard.instantiateViewController(withIdentifier: identifier)
@@ -46,4 +52,3 @@ class AdminViewController: UIViewController, UITabBarDelegate{
     }
         
 }
-

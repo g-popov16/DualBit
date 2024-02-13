@@ -11,24 +11,28 @@ import AVFoundation
 import AVKit
 
 protocol VideoPlayerDelegate: AnyObject {
-    func didEndPlayingVideo(lessonId: String)
+    func videoPlaybackDidEnd(lessonId: String?)
 }
 
-class VideoViewController:
-    UIViewController{
+/// A view controller that displays a video and handles video playback.
+class VideoViewController: UIViewController {
     var videoRef: String? // The video reference URL
     var lessonId: String?
     weak var delegate: VideoPlayerDelegate?
     var player: AVPlayer?
     
     @IBOutlet var videoView: UIView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         if let videoRef = videoRef, let videoURL = URL(string: videoRef) {
             playVideo(from: videoURL)
         }
     }
     
+    /// Plays a video from the given URL.
+    /// - Parameter url: The URL of the video to be played.
     func playVideo(from url: URL) {
         let player = AVPlayer(url: url)
         let playerViewController = AVPlayerViewController()
@@ -36,7 +40,6 @@ class VideoViewController:
         present(playerViewController, animated: true) {
             playerViewController.player!.play()
         }
-        print(lessonId)
         
         NotificationCenter.default.addObserver(
             forName: .AVPlayerItemDidPlayToEndTime,
@@ -55,8 +58,6 @@ class VideoViewController:
            let destinationVC = segue.destination as? ViewController,
            let lessonId = sender as? String {
             destinationVC.selectedLessonId = lessonId // Ensure this property is correctly used to initialize `quizBrain` or directly passed to it.
-            
         }
-        
     }
 }

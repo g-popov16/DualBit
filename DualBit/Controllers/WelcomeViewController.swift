@@ -1,9 +1,15 @@
 import UIKit
 import Firebase
 
-class WelcomeViewController: UIViewController {
-    let db = Firestore.firestore()
 
+
+/// The view controller responsible for displaying the welcome screen of the DualBit app.
+class WelcomeViewController: UIViewController {
+    
+    /// The Firestore database instance used for data storage and retrieval.
+    let db = Firestore.firestore()
+    
+    /// The label that displays the title of the app.
     @IBOutlet weak var titleLabel: UILabel!
     
     override func viewDidLoad() {
@@ -11,7 +17,7 @@ class WelcomeViewController: UIViewController {
         
         titleLabel.text = ""
         var charIndex = 0.0
-        let titleText = "DualBit" // Replace with your app name or Constants.appName if you have that constant set up
+        let titleText = "DualBit"
         
         for letter in titleText {
             Timer.scheduledTimer(withTimeInterval: 0.1 * charIndex, repeats: false) { [weak self] timer in
@@ -22,9 +28,5 @@ class WelcomeViewController: UIViewController {
         
         // Call the fetch function after a delay that's long enough for your title animation to finish
         
-        }
     }
-
-    
-
-
+}

@@ -1,8 +1,12 @@
 import Firebase
+
+/// The brain of the Lessons feature, responsible for loading lessons from Firestore.
 class LessonsBrain {
     private var db = Firestore.firestore()
     var lessons: [Lesson] = []
 
+    /// Loads lessons from Firestore.
+    /// - Parameter completion: A closure that is called when the loading is complete. It takes a `Result` object as its parameter, which contains either an array of `Lesson` objects or an error.
     func loadLessons(completion: @escaping (Result<[Lesson], Error>) -> Void) {
         db.collection("lessons").getDocuments { querySnapshot, error in
             if let error = error {

@@ -1,21 +1,29 @@
+//
+//  InboxViewController.swift
+//  DualBit
+//
+//  Created by Georgi Popov on 11.02.24.
+//  Copyright © 2024 Angela Yu. All rights reserved.
+//
+
+import Foundation
 import UIKit
 import Firebase
 import FirebaseAuth
 
-/// The view controller responsible for displaying lessons and handling user interactions.
-class LessonViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITabBarDelegate {
-    
+class InboxViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITabBarDelegate {
+    var friends: [Friend] = []
+    private var db = Firestore.firestore()
     @IBOutlet weak var addButton: UITabBarItem!
     @IBOutlet weak var tabBar: UITabBar!
     @IBOutlet weak var tableView: UITableView!
-    
     var lessonsBrain = LessonsBrain()
     var isAdmin: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Check if the user is an admin
+        // Check if the user is an admin and add the admin tab if necessary
         checkIfUserIsAdmin { isAdmin in
             DispatchQueue.main.async {
                 if isAdmin {
@@ -26,6 +34,7 @@ class LessonViewController: UIViewController, UITableViewDelegate, UITableViewDa
                     print("User is not an admin.")
                 }
             }
+            self.loadFriends()
         }
         
         let userId = Auth.auth().currentUser?.uid
@@ -34,7 +43,7 @@ class LessonViewController: UIViewController, UITableViewDelegate, UITableViewDa
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "LessonCell")
-        
+
         // Load the lessons
         lessonsBrain.loadLessons { [weak self] result in
             switch result {
@@ -53,7 +62,7 @@ class LessonViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
         guard let items = tabBar.items, let selectedIndex = items.firstIndex(of: item) else { return }
-        
+
         switch selectedIndex {
         case 0:
             // Present or navigate to the first view controller
@@ -61,12 +70,16 @@ class LessonViewController: UIViewController, UITableViewDelegate, UITableViewDa
         case 1:
             // Present or navigate to the second view controller
             navigateToViewController(withIdentifier: "Inbox")
+
         case 2:
             navigateToViewController(withIdentifier: "ProfileViewController")
+
         case 3:
             navigateToViewController(withIdentifier: "Admin")
+
         default:
             break
+            
         }
     }
     
@@ -79,57 +92,78 @@ class LessonViewController: UIViewController, UITableViewDelegate, UITableViewDa
         // For example, if you're using a navigation controller:
         navigationController?.pushViewController(viewController, animated: true)
     }
-    
-    // MARK: - UITableViewDataSource
-    
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return lessonsBrain.lessons.count
+        return friends.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "LessonCell", for: indexPath)
-        let lesson = lessonsBrain.lessons[indexPath.row]
-        
-        cell.textLabel?.text = "📚\(lesson.name)"
+        let friend = friends[indexPath.row]
+
+        cell.textLabel?.text = friend.email
         cell.textLabel?.font = UIFont.italicSystemFont(ofSize: 25)
         cell.textLabel?.textColor = .white
         cell.backgroundColor = UIColor.clear
         cell.selectionStyle = .none
-        
         return cell
     }
+
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let selectedLessonId = lessonsBrain.lessons[indexPath.row].id
-        let quizBrain = QuizBrain(lessonId: selectedLessonId)
-        
-        // Load questions asynchronously
-        Task {
-            await quizBrain.loadQuestions()
-            
-            // Check if questions are loaded and update UI accordingly
-            if quizBrain.areQuestionsLoaded() == true {
-                // Perform segue or update UI to display questions
-                performSegue(withIdentifier: "LessonToVideo", sender: nil)
+        let friendUID = friends[indexPath.row].uid
+        performSegue(withIdentifier: "GoToChat", sender: friendUID)
+    }
+
+    
+    func loadFriends() {
+        guard let currentUserUID = Auth.auth().currentUser?.uid else {
+            print("No user is logged in.")
+            return
+        }
+
+        let userDocRef = db.collection("users").document(currentUserUID)
+        userDocRef.getDocument { [weak self] (document, error) in
+            guard let self = self else { return }
+
+            if let document = document, document.exists, let friendsArray = document.data()?["friends"] as? [String] {
+                self.friends.removeAll()
+
+                let dispatchGroup = DispatchGroup()
+
+                for friendUID in friendsArray {
+                    dispatchGroup.enter()
+                    let friendDocRef = self.db.collection("users").document(friendUID)
+                    friendDocRef.getDocument { (friendDoc, error) in
+                        if let friendDoc = friendDoc, friendDoc.exists, let friendEmail = friendDoc.data()?["email"] as? String {
+                            let friend = Friend(email: friendEmail, uid: friendUID)
+                            self.friends.append(friend)
+                        } else {
+                            print("Could not fetch document for user \(friendUID): \(error?.localizedDescription ?? "Unknown error")")
+                        }
+                        dispatchGroup.leave()
+                    }
+                }
+
+                dispatchGroup.notify(queue: .main) {
+                    self.tableView.reloadData()
+                }
             } else {
-                // Handle error or show a message to the user
-                print("Failed to load questions")
+                print("Document does not exist or there was an error: \(String(describing: error))")
             }
         }
     }
-    
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "LessonToVideo",
-           let destinationVC = segue.destination as? VideoViewController,
-           let indexPath = tableView.indexPathForSelectedRow {
-            let selectedLesson = lessonsBrain.lessons[indexPath.row]
-            destinationVC.videoRef = selectedLesson.videoRef
-            destinationVC.lessonId = selectedLesson.id
+        if segue.identifier == "GoToChat" {
+            if let chatVC = segue.destination as? ChatViewController,
+               let friendUID = sender as? String {
+                chatVC.friendUID = friendUID
+            }
         }
     }
-    
-    // MARK: - Private Methods
-    
+
+
     private func addAdminTab() {
         let adminItem = UITabBarItem(title: "Add", image: UIImage(systemName: "plus"), tag: 1)
         if let items = tabBar.items {
@@ -140,27 +174,25 @@ class LessonViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
 }
 
-// MARK: - Helper Functions
-
-/// Function to check if the current user is an admin.
-/// - Parameter completion: A closure that is called with a boolean value indicating whether the user is an admin or not.
-func checkIfUserIsAdmin(completion: @escaping (Bool) -> Void) {
-    // Make sure there is a logged-in user
-    guard let userId = Auth.auth().currentUser?.uid else {
-        print("No user is logged in.")
-        completion(false) // No user is logged in, so cannot be admin
-        return
-    }
+// Function to check if the current user is an admin
+//func checkIfUserIsAdmin(completion: @escaping (Bool) -> Void) {
+//    // Make sure there is a logged-in user
+//    guard let userId = Auth.auth().currentUser?.uid else {
+//        print("No user is logged in.")
+//        completion(false) // No user is logged in, so cannot be admin
+//        return
+//    }
+//
+//    let userDocRef = Firestore.firestore().collection("users").document(userId)
+//    userDocRef.getDocument { (document, error) in
+//        if let document = document, document.exists {
+//            // Check if 'isAdmin' field exists and is set to true
+//            let isAdmin = document.data()?["isAdmin"] as? Bool ?? false
+//            completion(isAdmin) // Return true or false based on the isAdmin field
+//        } else {
+//            print("Document does not exist or error fetching document: \(error?.localizedDescription ?? "Unknown error")")
+//            completion(false) // Document doesn't exist or there was an error, so cannot be admin
+//        }
+//    }
     
-    let userDocRef = Firestore.firestore().collection("users").document(userId)
-    userDocRef.getDocument { (document, error) in
-        if let document = document, document.exists {
-            // Check if 'isAdmin' field exists and is set to true
-            let isAdmin = document.data()?["isAdmin"] as? Bool ?? false
-            completion(isAdmin) // Return true or false based on the isAdmin field
-        } else {
-            print("Document does not exist or error fetching document: \(error?.localizedDescription ?? "Unknown error")")
-            completion(false) // Document doesn't exist or there was an error, so cannot be admin
-        }
-    }
-}
+//}

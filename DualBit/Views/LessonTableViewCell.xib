@@ -21,23 +21,26 @@
                         <rect key="frame" x="103" y="0.0" width="40" height="40"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     </stackView>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="novel_4773810" translatesAutoresizingMaskIntoConstraints="NO" id="Vz4-8n-YOd">
-                        <rect key="frame" x="140" y="2" width="40" height="40"/>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="check" translatesAutoresizingMaskIntoConstraints="NO" id="S0N-tw-HSp">
+                        <rect key="frame" x="40" y="-42" width="240" height="128"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="40" id="0Ec-In-XGr"/>
-                            <constraint firstAttribute="width" constant="40" id="RJT-5b-RmB"/>
+                            <constraint firstAttribute="height" constant="128" id="ByR-qR-zLu"/>
+                            <constraint firstAttribute="width" constant="240" id="sL7-RQ-CAO"/>
                         </constraints>
                     </imageView>
                 </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="S0N-tw-HSp" secondAttribute="bottom" constant="-42" id="Akq-0h-yV8"/>
+                    <constraint firstItem="S0N-tw-HSp" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="40" id="eTX-3B-EDB"/>
+                    <constraint firstAttribute="trailing" secondItem="S0N-tw-HSp" secondAttribute="trailing" constant="40" id="nJP-0Z-X48"/>
+                    <constraint firstItem="S0N-tw-HSp" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="-42" id="rNV-Xx-SzE"/>
+                </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
-            <connections>
-                <outlet property="book" destination="Vz4-8n-YOd" id="cK6-wi-eYt"/>
-            </connections>
             <point key="canvasLocation" x="88.549618320610676" y="19.718309859154932"/>
         </tableViewCell>
     </objects>
     <resources>
-        <image name="novel_4773810" width="512" height="512"/>
+        <image name="check" width="500" height="500"/>
     </resources>
 </document>
