@@ -92,7 +92,12 @@ class ViewController: UIViewController {
                 if self.quizBrain.didUserPassQuiz() {
                     // The user has completed and passed the quiz
                     
-//                        self.quizBrain.completeLesson(lessonId: lessonId, userId: userId)
+                    guard let lessonId = self.selectedLessonId, let userId = Auth.auth().currentUser?.uid else {
+                                print("Error: Lesson ID or User ID is nil.")
+                                // Here, you might want to handle the error, e.g., by showing an alert to the user
+                                return
+                            }
+                    self.quizBrain.completeLesson(lessonId: lessonId, userId: userId)
                         print("Quiz completed and passed. Performing segue.")
                         self.performSegue(withIdentifier: "quizToLessons", sender: nil)
                     

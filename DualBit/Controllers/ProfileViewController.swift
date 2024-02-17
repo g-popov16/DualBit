@@ -34,7 +34,9 @@ class ProfileViewController: UIViewController, UITabBarDelegate{
         super.viewDidLoad()
         tabBar.delegate = self
         if let email = Auth.auth().currentUser?.email {
-            nameLabel.text = "Hello \(email)!"
+            let emailPrefix = email.split(separator: "@").first.map(String.init) ?? ""
+            nameLabel.text = "Hello \(emailPrefix)!"
+            
         }
     }
     

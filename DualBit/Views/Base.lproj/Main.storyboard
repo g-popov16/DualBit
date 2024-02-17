@@ -538,7 +538,7 @@
             <objects>
                 <viewController storyboardIdentifier="LessonViewController" title="Lesson View Controller" id="eoW-bj-6Je" customClass="LessonViewController" customModule="DualBit" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="97h-u0-Tqe">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="886"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="planets" id="Rcx-jq-yfW">
@@ -551,7 +551,7 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
                             <tabBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Efq-Fy-4Re">
-                                <rect key="frame" x="0.0" y="803" width="414" height="49"/>
+                                <rect key="frame" x="0.0" y="813" width="414" height="49"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <items>
@@ -772,6 +772,7 @@
                     <connections>
                         <outlet property="addFriendButton" destination="kNp-ke-fJv" id="OJL-tt-MsB"/>
                         <outlet property="searchBar" destination="SGu-Kc-KjM" id="PSD-7m-yFa"/>
+                        <outlet property="tabBar" destination="4Sb-ET-srf" id="BnL-62-w5H"/>
                         <outlet property="tableView" destination="dEk-Me-i5S" id="N8e-jQ-lek"/>
                     </connections>
                 </viewController>
@@ -1151,8 +1152,8 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="Go7-RK-GaG"/>
-        <segue reference="4MV-p1-M7Z"/>
-        <segue reference="DdH-3C-A2p"/>
+        <segue reference="ty0-MR-Rg9"/>
+        <segue reference="5OL-rr-z2u"/>
         <segue reference="f45-El-r29"/>
     </inferredMetricsTieBreakers>
     <resources>

@@ -86,16 +86,47 @@ class LessonViewController: UIViewController, UITableViewDelegate, UITableViewDa
         return lessonsBrain.lessons.count
     }
     
+    func isLessonCompleted(lessonId: String, completion: @escaping (Bool) -> Void) {
+        guard let userId = Auth.auth().currentUser?.uid else {
+            print("No user is logged in.")
+            completion(false) // No user is logged in
+            return
+        }
+
+        let userDocRef = Firestore.firestore().collection("users").document(userId)
+        userDocRef.getDocument { (document, error) in
+            if let document = document, document.exists, let completedLessons = document.data()?["completedLessons"] as? [String] {
+                // Check if the lessonId is in the completedLessons array
+                let isCompleted = completedLessons.contains(lessonId)
+                completion(isCompleted)
+            } else {
+                print("Document does not exist or error fetching document: \(error?.localizedDescription ?? "Unknown error")")
+                completion(false) // Document doesn't exist or there was an error
+            }
+        }
+    }
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "LessonCell", for: indexPath)
         let lesson = lessonsBrain.lessons[indexPath.row]
-        
-        cell.textLabel?.text = "📚\(lesson.name)"
+
+        // Check if the lesson is completed and update the cell accordingly
+        isLessonCompleted(lessonId: lesson.id) { [weak cell] isCompleted in
+            DispatchQueue.main.async {
+                if isCompleted {
+                    cell?.textLabel?.text = "✅\(lesson.name)"
+                } else {
+                    cell?.textLabel?.text = "📚\(lesson.name)"
+                }
+            }
+        }
+
+        // Configure the rest of your cell as before
         cell.textLabel?.font = UIFont.italicSystemFont(ofSize: 25)
         cell.textLabel?.textColor = .white
         cell.backgroundColor = UIColor.clear
         cell.selectionStyle = .none
-        
+
         return cell
     }
     

@@ -9,6 +9,8 @@ class FriendsViewController: UIViewController, UISearchBarDelegate, UITableViewD
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var addFriendButton: UIButton!
     
+    @IBOutlet weak var tabBar: UITabBar!
+    
     let db = Firestore.firestore()
     var users: [[String: Any]] = [] // Array of dictionaries to store user data
     
@@ -128,6 +130,31 @@ class FriendsViewController: UIViewController, UISearchBarDelegate, UITableViewD
         dispatchGroup.notify(queue: .main) {
             completion(updateSuccess)
         }
+    }
+    func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
+        guard let items = tabBar.items, let selectedIndex = items.firstIndex(of: item) else { return }
+        
+        switch selectedIndex {
+        case 0:
+            // Present or navigate to the first view controller
+            navigateToViewController(withIdentifier: "LessonViewController")
+        case 1:
+            // Present or navigate to the second view controller
+            navigateToViewController(withIdentifier: "Inbox")
+        case 2:
+            navigateToViewController(withIdentifier: "ProfileViewController")
+        
+        default:
+            break
+        }
+    }
+    
+    func navigateToViewController(withIdentifier identifier: String) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let viewController = storyboard.instantiateViewController(withIdentifier: identifier)
+        // Present or push the view controller
+        // For example, if you're using a navigation controller:
+        navigationController?.pushViewController(viewController, animated: true)
     }
     
     func createConversationForFriends(user1UID: String, user2UID: String) {

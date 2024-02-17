@@ -14,7 +14,7 @@ class AddQuestionsViewController: UIViewController, UITabBarDelegate{
     @IBOutlet var answerTextFields: [UITextField]!
     @IBOutlet weak var tabBar: UITabBar!
     @IBOutlet var correctAnswerButtons: [UIButton]!
-    var lessonID: String?
+    var lessonID: String!
     
     override func viewDidLoad() {
         tabBar.delegate = self
