@@ -1,55 +1,39 @@
-![App Brewery Banner](Documentation/AppBreweryBanner.png)
+DualBit: Learning Made Easy and Accessible
 
-# Flash-Chat
+Overview
 
-## Our Goal
+DualBit revolutionizes learning by integrating the appeal of social media into education, making it fun and understandable through short videos and exercises. Inspired by the myth of Prometheus, this app aims to bring the divine fire of knowledge to users in a digestible format, encouraging learning at one’s own pace.
 
-One of the most fundamental component of modern iOS apps is the Table View. Table Views are used everywhere from the Mail app to the Messages app. It’s a crucial part of every iOS developer’s tool belt. In this tutorial we’ll be getting to grips with Table Views, creating custom cells, and making our own cloud-based backend database. It’s going to be epic, so buckle up.
+Authors
 
-## What you will create
+	•	Georgi Georgiev Popov, a student at Profilirana matematicheska gimnaziya “Konstantin Velichkov”, Pazardzhik.
+	•	Supervisor: Tsvetanka Zinovieva Slavkova, a teacher of computer science and information technology.
 
-Flash Chat is an internet based messaging app similar to WhatsApp, the popular messaging app that was bought by Facebook for $22 billion. We will be using a service called Firebase Firestore as a backend database to store and retrieve our messages from the cloud. 
+Features
 
-## What you will learn
+	•	Short Format Lessons: Bite-sized videos and exercises that make learning programming accessible and engaging.
+	•	Interactive Learning: A messaging function allows students to share their learning experiences.
+	•	Comprehensive Curriculum: Covers programming fundamentals with the potential for expansion.
+	•	User Roles: Differentiated access for users and administrators, with admin capabilities to add new lessons, videos, and questions.
 
-* How to integrate third party libraries in your app using Cocoapods and Swift Package Manager.
-* How to store data in the cloud using Firebase Firestore.
-* How to query and sort the Firebase database.
-* How to use Firebase for user authentication, registration and login.
-* How to work with UITableViews and how to set their data sources and delegates.
-* How to create custom views using .xib files to modify native design components.
-* How to embed View Controllers in a Navigation Controller and understand the navigation stack.
-* How to create a constants file and use static properties to store Strings and other constants.
-* Learn about Swift loops and create animations using loops.
-* Learn about the App Lifecycle and how to use viewWillAppear or viewWillDisappear.
-* How to create direct Segues for navigation.
+Technical Stack
 
+	•	Frontend and Business Logic: Utilizes Swift and a layered architecture including front end, business logic, and backend components.
+	•	Database: Firebase Firestore for data storage and management.
+	•	Dependencies: Includes AppAuth, Firebase, GoogleSignIn, and more for comprehensive app functionality.
 
-# Constants
-```
-struct K {
-    static let cellIdentifier = "ReusableCell"
-    static let cellNibName = "MessageCell"
-    static let registerSegue = "RegisterToChat"
-    static let loginSegue = "LoginToChat"
-    
-    struct BrandColors {
-        static let purple = "BrandPurple"
-        static let lightPurple = "BrandLightPurple"
-        static let blue = "BrandBlue"
-        static let lighBlue = "BrandLightBlue"
-    }
-    
-    struct FStore {
-        static let collectionName = "messages"
-        static let senderField = "sender"
-        static let bodyField = "body"
-        static let dateField = "date"
-    }
-}
+Development Plan
 
-```
+	•	Feedback and Updates: Continuous improvement based on user feedback.
+	•	Expansion: Plans for Android and web versions, internationalization, and adding new courses.
+	•	Engagement: Introduction of gamification and personalized learning paths.
+	•	Support: Extensive support for multiple programming languages and analytics for tracking progress.
 
->This is a companion project to The App Brewery's Complete App Developement Bootcamp, check out the full course at [www.appbrewery.co](https://www.appbrewery.co/)
+Contact Information
 
-![End Banner](Documentation/readme-end-banner.png)
+For more details and support, please contact:
+
+	•	Georgi Georgiev Popov: joro.popov16@gmail.com
+	•	Tsvetanka Zinovieva Slavkova: c.slavkova@mgpz.org
+
+This readme provides a concise overview of the DualBit app, focusing on its key features, development approach, and the vision behind its creation. For further development details or collaboration, please reach out to the contacts provided.
