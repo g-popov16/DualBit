@@ -7,7 +7,7 @@ DualBit revolutionizes learning by integrating the appeal of social media into e
 Authors
 
 	•	Georgi Georgiev Popov, a student at Profilirana matematicheska gimnaziya “Konstantin Velichkov”, Pazardzhik.
-	•	Supervisor: Tsvetanka Zinovieva Slavkova, a teacher of computer science and information technology.
+
 
 Features
 
@@ -34,6 +34,5 @@ Contact Information
 For more details and support, please contact:
 
 	•	Georgi Georgiev Popov: joro.popov16@gmail.com
-	•	Tsvetanka Zinovieva Slavkova: c.slavkova@mgpz.org
 
 This readme provides a concise overview of the DualBit app, focusing on its key features, development approach, and the vision behind its creation. For further development details or collaboration, please reach out to the contacts provided.
