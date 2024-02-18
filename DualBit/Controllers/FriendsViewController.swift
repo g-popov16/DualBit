@@ -68,6 +68,8 @@ class FriendsViewController: UIViewController, UISearchBarDelegate, UITableViewD
         }
         cell.backgroundColor = UIColor.clear
         cell.textLabel?.backgroundColor = UIColor.clear // In case the label has its own background
+        cell.textLabel?.textColor = .white
+        cell.selectionStyle = .none
         return cell
     }
     

@@ -37,17 +37,31 @@ class RegisterViewController: UIViewController {
             "uid": uid,
             "completedLessons": [],
             "friends": [], // Empty array to hold friends' user IDs
-            "streak": 0 // Integer to track consecutive days of app usage or lesson completion
         ] as [String: Any]
 
         db.collection("users").document(uid).setData(user) { error in
-            if let error = error {
-                self.errorLabel.text = "Error saving user data to Firestore: \(error.localizedDescription)"
-            } else {
-                // User data added to Firestore, perform segue to the next screen
-                self.performSegue(withIdentifier: Constants.registerSegue, sender: self)
+                if let error = error {
+                    self.errorLabel.text = "Error saving user data to Firestore: \(error.localizedDescription)"
+                } else {
+                    // Now that the user document is created, let's add a streak subcollection
+                    let streakData = [
+                        "currentStreak": 0,
+                        "lastQuizDate": NSNull(), // Or use a valid date if you prefer
+                        "longestStreak": 0
+                    ] as [String : Any]
+
+                    // Add the streak document to the streak subcollection
+                    db.collection("users").document(uid).collection("streak").document("current").setData(streakData) { error in
+                        if let error = error {
+                            self.errorLabel.text = "Error saving streak data to Firestore: \(error.localizedDescription)"
+                        } else {
+                            // Streak data added to Firestore, perform segue to the next screen
+                            self.performSegue(withIdentifier: Constants.registerSegue, sender: self)
+                        }
+                    }
+                }
             }
-        }
+        
     }
 
     override func viewDidLoad() {

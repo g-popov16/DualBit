@@ -20,9 +20,14 @@ class AdminViewController: UIViewController, UITabBarDelegate{
         tabBar.delegate = self
         
         // Check if a user is logged in and display a welcome message
-        if let email = Auth.auth().currentUser?.email{
-            nameLabel.text = "Hello \(email), you are an admin!"
+        if let email = Auth.auth().currentUser?.email {
+            let emailPrefix = email.split(separator: "@").first.map(String.init) ?? ""
+            nameLabel.text = "Hello \(emailPrefix), you are an admin!"
+            
         }
+
+        
+        
     }
     
     // UITabBarDelegate method called when a tab is selected

@@ -26,6 +26,9 @@ class LessonViewController: UIViewController, UITableViewDelegate, UITableViewDa
                     print("User is not an admin.")
                 }
             }
+            
+            let streakBrain = StreakBrain()
+            streakBrain.checkStreak()
         }
         
         let userId = Auth.auth().currentUser?.uid

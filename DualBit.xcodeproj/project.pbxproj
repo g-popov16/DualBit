@@ -57,6 +57,7 @@
 		774FEBF12B4B21F100AD78F0 /* FirebaseStorageCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = 774FEBF02B4B21F100AD78F0 /* FirebaseStorageCombine-Community */; };
 		774FEBF42B4B222400AD78F0 /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = 774FEBF32B4B222400AD78F0 /* GoogleSignIn */; };
 		774FEBF62B4B222400AD78F0 /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 774FEBF52B4B222400AD78F0 /* GoogleSignInSwift */; };
+		7769F6E62B82561F0019DD2E /* streakBrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7769F6E52B82561F0019DD2E /* streakBrain.swift */; };
 		777971382B4A04E800592CC6 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 777971372B4A04E800592CC6 /* FirebaseAuth */; };
 		7779713A2B4A04E800592CC6 /* FirebaseAuthCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = 777971392B4A04E800592CC6 /* FirebaseAuthCombine-Community */; };
 		7779713C2B4A04E800592CC6 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 7779713B2B4A04E800592CC6 /* FirebaseCrashlytics */; };
@@ -105,6 +106,7 @@
 		772DD87D2B65A4E2006398BD /* AddQuestionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddQuestionsViewController.swift; sourceTree = "<group>"; };
 		773A0E0F2B5D5CFB009D911D /* boy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = boy.png; sourceTree = "<group>"; };
 		773A0E112B5D6F32009D911D /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		7769F6E52B82561F0019DD2E /* streakBrain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = streakBrain.swift; sourceTree = "<group>"; };
 		777971452B4A119700592CC6 /* constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = constants.swift; sourceTree = "<group>"; };
 		777971472B4A170200592CC6 /* message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = message.swift; sourceTree = "<group>"; };
 		7779714D2B4AF38900592CC6 /* MessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCell.swift; sourceTree = "<group>"; };
@@ -249,6 +251,7 @@
 				77D7E2152B507044007F7C86 /* lessons.swift */,
 				77D7E2172B5070DF007F7C86 /* lessonsBrain.swift */,
 				77A10D7E2B7AA1FD00DAF8DA /* Friends.swift */,
+				7769F6E52B82561F0019DD2E /* streakBrain.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -383,6 +386,7 @@
 				0B628179235DEE8100E35CAF /* SceneDelegate.swift in Sources */,
 				777971462B4A119700592CC6 /* constants.swift in Sources */,
 				0B62818F235DF01000E35CAF /* LoginViewController.swift in Sources */,
+				7769F6E62B82561F0019DD2E /* streakBrain.swift in Sources */,
 				77A10D7F2B7AA1FD00DAF8DA /* Friends.swift in Sources */,
 				77054BC72B4B3C5300176026 /* QuizViewController.swift in Sources */,
 				772DD87A2B659C3D006398BD /* AdminViewController.swift in Sources */,

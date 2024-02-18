@@ -68,14 +68,62 @@ class QuizBrain {
         // Atomically add a new lesson ID to the "completedLessons" array field
         userDocRef.updateData([
             "completedLessons": FieldValue.arrayUnion([lessonId])
-        ]) { error in
+        ]) { [self] error in
             if let error = error {
                 print("Error updating document: \(error)")
             } else {
                 print("Document successfully updated")
+                recordQuizCompletion(userId: Auth.auth().currentUser!.uid)
             }
         }
     }
+    
+    func recordQuizCompletion(userId: String) {
+        let userStreakRef = db.collection("users").document(userId).collection("streak").document("current")
+
+        // Use server timestamp to ensure consistency
+        let today = Timestamp(date: Date())
+
+        db.runTransaction({ (transaction, errorPointer) -> Any? in
+            let userStreakDocument: DocumentSnapshot
+            do {
+                try userStreakDocument = transaction.getDocument(userStreakRef)
+            } catch let fetchError as NSError {
+                errorPointer?.pointee = fetchError
+                return nil
+            }
+
+            guard let lastQuizDate = userStreakDocument.data()?["lastQuizDate"] as? Timestamp else {
+                // If the document does not exist or lastQuizDate is not set, initialize
+                transaction.setData(["currentStreak": 1, "lastQuizDate": today, "longestStreak": 1], forDocument: userStreakRef)
+                return nil
+            }
+
+            let calendar = Calendar.current
+            let date1 = calendar.startOfDay(for: lastQuizDate.dateValue())
+            let date2 = calendar.startOfDay(for: Date())
+
+            let components = calendar.dateComponents([.day], from: date1, to: date2)
+            let currentStreak = userStreakDocument.data()?["currentStreak"] as? Int ?? 0
+            let longestStreak = userStreakDocument.data()?["longestStreak"] as? Int ?? 0
+
+            if components.day == 1 { // Consecutive day
+                transaction.updateData(["currentStreak": currentStreak + 1, "lastQuizDate": today, "longestStreak": max(longestStreak, currentStreak + 1)], forDocument: userStreakRef)
+            } else if components.day! > 1 { // Not consecutive, reset streak
+                transaction.updateData(["currentStreak": 1, "lastQuizDate": today], forDocument: userStreakRef)
+            }
+            // If components.day == 0, do nothing (already completed quiz today)
+
+            return nil
+        }) { (object, error) in
+            if let error = error {
+                print("Transaction failed: \(error)")
+            } else {
+                print("Transaction successfully committed!")
+            }
+        }
+    }
+
     
     func isQuizFinished() -> Bool {
             return currentQuestionIndex >= questions.count - 1
