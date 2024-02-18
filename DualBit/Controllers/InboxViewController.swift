@@ -100,8 +100,8 @@ class InboxViewController: UIViewController, UITableViewDelegate, UITableViewDat
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "LessonCell", for: indexPath)
         let friend = friends[indexPath.row]
-
-        cell.textLabel?.text = friend.email
+        let emailPrefix = friend.email.split(separator: "@").first.map(String.init) ?? ""
+        cell.textLabel?.text = "\(emailPrefix) - Streak: \(friend.currentStreak) days🔥"
         cell.textLabel?.font = UIFont.italicSystemFont(ofSize: 25)
         cell.textLabel?.textColor = .white
         cell.backgroundColor = UIColor.clear
@@ -133,15 +133,32 @@ class InboxViewController: UIViewController, UITableViewDelegate, UITableViewDat
 
                 for friendUID in friendsArray {
                     dispatchGroup.enter()
+                    
                     let friendDocRef = self.db.collection("users").document(friendUID)
                     friendDocRef.getDocument { (friendDoc, error) in
                         if let friendDoc = friendDoc, friendDoc.exists, let friendEmail = friendDoc.data()?["email"] as? String {
-                            let friend = Friend(email: friendEmail, uid: friendUID)
-                            self.friends.append(friend)
+                            
+                            // Now fetch the current streak for this friend
+                            let userStreakRef = friendDocRef.collection("streak").document("current")
+                            userStreakRef.getDocument { (streakDoc, streakError) in
+                                var currentStreak = 0 // Default to 0
+                                
+                                if let streakDoc = streakDoc, streakDoc.exists, let streak = streakDoc.data()?["currentStreak"] as? Int {
+                                    currentStreak = streak
+                                } else {
+                                    print("Could not fetch streak for user \(friendUID): \(streakError?.localizedDescription ?? "Unknown error")")
+                                }
+                                
+                                // Now that we have all information, append the friend
+                                let friend = Friend(email: friendEmail, uid: friendUID, currentStreak: currentStreak)
+                                self.friends.append(friend)
+                                
+                                dispatchGroup.leave()
+                            }
                         } else {
                             print("Could not fetch document for user \(friendUID): \(error?.localizedDescription ?? "Unknown error")")
+                            dispatchGroup.leave()
                         }
-                        dispatchGroup.leave()
                     }
                 }
 

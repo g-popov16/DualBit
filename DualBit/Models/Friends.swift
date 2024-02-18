@@ -6,5 +6,6 @@
 struct Friend {
     let email: String
     let uid: String
+    var currentStreak: Int = 0
 }
 
