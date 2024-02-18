@@ -3,7 +3,6 @@
 //  DualBit
 //
 //  Created by Georgi Popov on 11.02.24.
-//  Copyright © 2024 Angela Yu. All rights reserved.
 //
 
 import Foundation
