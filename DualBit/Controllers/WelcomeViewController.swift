@@ -26,7 +26,7 @@ class WelcomeViewController: UIViewController {
             charIndex += 1
         }
         
-        // Call the fetch function after a delay that's long enough for your title animation to finish
+        
         
     }
 }

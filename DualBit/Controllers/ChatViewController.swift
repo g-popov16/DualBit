@@ -134,14 +134,16 @@ extension ChatViewController: UITableViewDataSource {
         if message.sender == Auth.auth().currentUser?.email {
             cell.youImageView.isHidden = true
             cell.rightImageView.isHidden = false
-            cell.label.textColor = UIColor(named: Constants.BrandColors.purple)
+            cell.label.textColor = UIColor(red: 255.0/255.0, green: 196.0/255.0, blue: 250.0/255.0, alpha: 1.0)
+            cell.label.textAlignment = .right
         } else{
             cell.youImageView.isHidden = false
             cell.rightImageView.isHidden = true
-            // check if it's the initial message
-            if message.sender == "system"{
-                cell.rightImageView.image = UIImage(named: "Admin")
-            }
+            cell.label.textColor = UIColor(red: 110.0/255.0, green: 196.0/255.0, blue: 249.0/255.0, alpha: 1.0)
+            
+
+            
+            
             
         }
         
